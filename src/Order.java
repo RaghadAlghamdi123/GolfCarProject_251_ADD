@@ -44,6 +44,22 @@ class Order {
         this.numSeats = numSeats;
     }
     
+        public void cancellationOrder(Boolean isCancel ){
+        if (isCancel ==true)
+        {
+          setStatus("Canceled");  
+        }
+    }
     
-  
+    public static void OrderDetails(Order order) {
+        // Implement your scheduling logic here
+        
+        // Example: Print the order details
+        System.out.println("-------------------");
+        System.out.println("Order details: \n Number of seats: " + order.getNumSeats() +
+                "\n Current location: " + order.getCurrentLocation().getAdress() +
+                "\n Destination location: " + order.getDestinationLocation().getAdress());
+        System.out.println("-------------------");
+    }
+    
 }

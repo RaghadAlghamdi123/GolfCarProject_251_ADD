@@ -18,11 +18,13 @@ class Student extends User {
         
     }
 
-   
- 
-    
-    
-   
-    
+       public Order RequestGolfCar(Location currentLocation, Location destinationLocation, int numSeats) {
+        currentLocation = currentLocation;
+        destinationLocation = destinationLocation;
+        numSeats = numSeats;
+        Order newOreder= new Order( currentLocation,  destinationLocation,  numSeats);
+        return newOreder;
+        
+    } 
     
 }
