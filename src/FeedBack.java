@@ -9,40 +9,46 @@
  * 
  */
 public class FeedBack {
-    private int feedback_Id;
-    private String feedback;
-    private int rating;
+     private String feedbackID;
+    private String FreeFeedback;
+    private int RestrictedFeedback;
 
-    public FeedBack(String feedback) {
-        this.feedback = feedback;
+    public FeedBack(String feedbackID) {
+        this.feedbackID = feedbackID;
     }
 
-    public FeedBack(int rating) {
-        this.rating = rating;
+    
+
+    // Method to set Restricted feedback
+    public void setRestrictedFeedback(int feedback) {
+        this.RestrictedFeedback = feedback;
     }
 
-    public int getFeedback_Id() {
-        return feedback_Id;
+    // Method to set free feedback
+    public void setFreeFeedback(String feedback) {
+       System.out.println("Free Feedback set successfully.");
+
+        this.FreeFeedback = feedback;
+        
     }
 
-    public void setFeedback_Id(int feedback_Id) {
-        this.feedback_Id = feedback_Id;
+    // Getter for free feedback
+    public String getFreeFeedback() {
+        System.out.println("Feedback ID: " + feedbackID);
+        System.out.println("Free Feedback: " + FreeFeedback);
+        return FreeFeedback;
     }
 
-    public String getFeedback() {
-        return feedback;
+    // Getter for restricted feedback
+    public int getRestrictedFeedback() {
+        System.out.println("Feedback ID: " + feedbackID);
+        System.out.println("Restricted Feedback: " + RestrictedFeedback);
+        return RestrictedFeedback;
     }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
+    
+     // method to display confirmation for setting feedback
+    private void displayConfirmation() {
+        System.out.println("your feedback set successfully.");
+     }
     
 }
