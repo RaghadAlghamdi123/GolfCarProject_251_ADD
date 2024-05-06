@@ -1,8 +1,18 @@
 
+
 import java.util.Scanner;
 
 public class GolfCar1 {
+    
+    
+    
+    
+    
+    
+    
+    
 public static void main(String[] args) {
+    
 Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter your name: ");
@@ -31,16 +41,30 @@ Scanner scanner = new Scanner(System.in);
 
         Driver driver = new Driver(110786,"Fatema");
         boolean isAccepted = driver.AcceptOrRejectOrder(order);
+        GolfCar car= new GolfCar(12,"23453");
 
         if (isAccepted) {
             System.out.println("Order accepted by the driver.");
             order.OrderDetails(order);
+            car.printETA(current);
+           car.notifyDriverArrival(current);
+           car.printDestinationETA(dest);
         } else {
             System.out.println("Order rejected by the driver.");
         }
 
         scanner.close();
+      
+        
+        
+        
+        
+        
+        
+        
+        
     }
+
     
 }
 
