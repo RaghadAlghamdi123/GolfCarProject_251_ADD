@@ -4,9 +4,9 @@ class Order {
     private Location currentLocation;
     private Location destinationLocation;
     private String status="Accepted";
-    private int numSeats;
+    private String numSeats;
     
-    public Order(Location currentLocation, Location destinationLocation, int numSeats) {
+    public Order(Location currentLocation, Location destinationLocation, String numSeats) {
         this.currentLocation = currentLocation;
         this.destinationLocation = destinationLocation;
         this.numSeats = numSeats;
@@ -36,11 +36,11 @@ class Order {
         this.status = status;
     }
 
-    public int getNumSeats() {
+    public String getNumSeats() {
         return numSeats;
     }
 
-    public void setNumSeats(int numSeats) {
+    public void setNumSeats(String numSeats) {
         this.numSeats = numSeats;
     }
     

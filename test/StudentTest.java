@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,16 +41,20 @@ public class StudentTest {
     /**
      * Test of RequestGolfCar method, of class Student.
      */
- @Test
-public void testRequestGolfCar1() {
-    System.out.println("requestGolfCar");
-    Location currentLocation = new Location("buliding 460");
-    Location destinationLocation = new Location("buliding 65");
-    int numSeats = 4; // or any number of seats you want to test with
-    Student instance = new Student(11223344,"Rania");
-    Order expResult = new Order(currentLocation, destinationLocation, numSeats);
-    Order result = instance.RequestGolfCar(currentLocation, destinationLocation, numSeats);
-    assertNotNull(result);
-}
+  @Test
+    public void testRequestGolfCar() {
+        // Concatenate all inputs with line breaks to simulate user entering them one after another
+        String simulatedUserInput = "5\n420\n500\n";
+        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+        // Assuming the 'requestGolfCar' method has been adjusted to accept a Scanner object
+        // for testing purposes (this requires a small modification to your method)
+        Order result = Student.requestGolfCar(scanner);
+        // Assert that an Order object was returned
+        assertNotNull(result);
+
+        // Clean up by closing the scanner
+        scanner.close();
+    }
     
 }

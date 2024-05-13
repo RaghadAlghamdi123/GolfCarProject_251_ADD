@@ -1,22 +1,19 @@
 
-import java.util.Timer;
-import java.util.TimerTask;
 class GolfCar {
-   private int numSeats;
+   private String numSeats;
  private static  String platenum;
 
    
 
-    public GolfCar(int numSeats, String platenum) {
+    public GolfCar(String numSeats, String platenum) {
         this.numSeats = numSeats;
         this.platenum = platenum;
     }
-
-    public int getNumSeats() {
+    public String getNumSeats() {
         return numSeats;
     }
 
-    public void setNumSeats(int numSeats) {
+    public void setNumSeats(String numSeats) {
         this.numSeats = numSeats;
     }
 
@@ -100,5 +97,6 @@ class GolfCar {
     
     
 }
+
 
 
