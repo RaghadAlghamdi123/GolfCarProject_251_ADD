@@ -28,31 +28,31 @@ class GolfCar {
     
     // Method to calculate ETA and print for user and driver
     public   void printETA(Location pickupLocation) {
-        // Dummy calculation of ETA (in minutes)
-        int etaMinutes = (int) (Math.random() * 30) + 15; // Random value between 15 and 45 minutes
+       
+       
         
         // ETA in hours and minutes
        
-        int minutes = etaMinutes % 60;
+       
         
         // ETA as string
-        String etaString =  minutes + " minutes";
+        
         
         // Print ETA for user
-        System.out.println("\n--------------------------------------- Student screen-----------------------------------------------");
-        System.out.println("Estimated time of arrival for student: " + etaString);
+        System.out.println("--------------------------------------- Student screen-----------------------------------------------");
+        System.out.println("Estimated time of arrival for student: 12 minutes ");
         System.out.println("Car plate number: " +platenum);
         
         // Print ETA for driver
-         System.out.println("\n--------------------------------------- Driver screen-----------------------------------------------");
-        System.out.println("Estimated time of arrival for driver: " + etaString);
+         System.out.println("--------------------------------------- Driver screen-----------------------------------------------");
+        System.out.println("Estimated time of arrival for driver: 12 minutes ");
         System.out.println("Pickup location: " + pickupLocation.getAdress());
         
     }
     
     public  void notifyDriverArrival( Location  pickupLocation) {
     
-                         System.out.println("\n--------------------------------------- Student screen-----------------------------------------------");
+                         System.out.println("--------------------------------------- Student screen-----------------------------------------------");
         
         
       
@@ -72,23 +72,16 @@ class GolfCar {
     // Static method to calculate ETA and print for user and driver based on destination location
     public  void printDestinationETA(Location destination) {
         // Dummy calculation of ETA (in minutes)
-        int etaMinutes = (int) (Math.random() * 60) + 30; // Random value between 30 and 90 minutes
-        
-        // ETA in hours and minutes
        
-        int minutes = etaMinutes % 60;
-        
-        // ETA as string
-        String etaString =  minutes + " minutes";
         
         // Print ETA for user
-        System.out.println("Estimated time of arrival for student to destination: " + etaString);
+        System.out.println("Estimated time of arrival for student to destination: 10 minutes");
         System.out.println("Car plate number: " + platenum);
         
         // Print ETA for driver
-                 System.out.println("\n--------------------------------------- Driver screen-----------------------------------------------");
+                 System.out.println("--------------------------------------- Driver screen-----------------------------------------------");
 
-        System.out.println("Estimated time of arrival for driver to destination: " + etaString);
+        System.out.println("Estimated time of arrival for driver to destination: 10 minutes");
         System.out.println("Destination location: " + destination.getAdress());
                 
 
