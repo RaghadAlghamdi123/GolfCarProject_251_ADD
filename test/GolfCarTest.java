@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
@@ -18,110 +17,89 @@ import static org.junit.Assert.*;
  * @author aseel
  */
 public class GolfCarTest {
-      Location pickupLocation;
-       GolfCar car ;
-       ByteArrayOutputStream outContent;
-       Location DestinationLocation;
+
+    GolfCar car;
+    ByteArrayOutputStream outContent;
+    Location pickupLocation;
+    Location DestinationLocation;
+    String[] locations;
+    int[] distances;
+
     public GolfCarTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-         pickupLocation = new Location("123");
-        car = new GolfCar(4, "2345");
-         outContent = new ByteArrayOutputStream();
-         DestinationLocation=new Location("134");
+
+        car = new GolfCar("4", "2345");
+        outContent = new ByteArrayOutputStream();
+
+        locations = new String[]{"library", "College of Designs", "Cafeteria"};
+        distances = new int[]{500, 300, 200};
+
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    @Test
-    public void testGetNumSeats() {
-         assertEquals(4, car.getNumSeats());
-        
-    }
+   @Test
+    public void testEstimateTimep() {
+       // Define current and destination locations
+        String current = "library";
+        String destination = "Cafeteria";
 
-    @Test
-    public void testSetNumSeats() {
-        // Set a new value for numSeats
-        car.setNumSeats(6);
+        // Call the method under test
+        String actualOutput = car.estimateTimep(current, destination);
 
-        // Test that the value was set correctly
-        assertEquals(6, car.getNumSeats());
-    }
+        // Define the expected output
+        String expectedOutput = "Please wait, the driver will come within 03 minutes and 49 seconds\n\nIn the car " +
+                                "distance from " + current + " to " + destination + ": 300 km\n" +
+                                "Estimated time to arrival: 03 minutes and 38 seconds";
 
-    @Test
-    public void testGetPlatenum() {
-        
-        assertEquals("2345", car.getPlatenum());
-    }
-
-    @Test
-    public void testSetPlatenum() {
-        car.setPlatenum("5678");
-
-        // Test that the value was set correctly
-        assertEquals("5678", car.getPlatenum());
-    }
-
-    @Test
-    public void testPrintETA() {
-        // Prepare test data
-       
-        
-        // Redirect standard output to capture printed messages
-       
-        System.setOut(new PrintStream(outContent));
-        
-        // Call the method to be tested
-        car.printETA(pickupLocation);
-        
-        // Define the expected result
-        String expectedResult = "--------------------------------------- Student screen-----------------------------------------------"+System.getProperty("line.separator");
-        expectedResult += "Estimated time of arrival for student: 12 minutes "+System.getProperty("line.separator");
-        expectedResult += "Car plate number: 2345"+System.getProperty("line.separator");
-        expectedResult += "--------------------------------------- Driver screen-----------------------------------------------"+System.getProperty("line.separator");
-        expectedResult += "Estimated time of arrival for driver: 12 minutes "+System.getProperty("line.separator");
-        expectedResult += "Pickup location: 123"+System.getProperty("line.separator");
-        
-        // Assert that the printed output matches the expected result
-        assertEquals(expectedResult, outContent.toString());
-    }
-
-    @Test
-    public void testNotifyDriverArrival() {
-        System.setOut(new PrintStream(outContent));
-        car.notifyDriverArrival(pickupLocation);
-         String expectedResult = "--------------------------------------- Student screen-----------------------------------------------"+System.getProperty("line.separator");
-        expectedResult += "Driver will arrive in 2 minutes at 123"+System.getProperty("line.separator");
-        expectedResult += "Driver has arrived at 123"+System.getProperty("line.separator");
-        
-        // Assert that the printed output matches the expected result
-        assertEquals(expectedResult, outContent.toString());
-        
-    }
-
-    @Test
-    public void testPrintDestinationETA() {
-       System.setOut(new PrintStream(outContent));
-       car.printDestinationETA(DestinationLocation);
-       String expectedResult = "Estimated time of arrival for student to destination: 10 minutes"+System.getProperty("line.separator");
-        expectedResult += "Car plate number: 2345"+System.getProperty("line.separator");
-        expectedResult += "--------------------------------------- Driver screen-----------------------------------------------"+System.getProperty("line.separator");
-        expectedResult += "Estimated time of arrival for driver to destination: 10 minutes"+System.getProperty("line.separator");
-        expectedResult += "Destination location: 134"+System.getProperty("line.separator");
-                assertEquals(expectedResult, outContent.toString());
-
-    }
+        // Assert that the output matches the expected output
+        assertEquals(expectedOutput, actualOutput);    }
     
+    
+    
+    
+    
+    
+
+    @Test
+    public void testEstimateTime() {
+        // Test case for a distance of 200 km
+        int distance = 200;
+        // Expected output considering the adjustment for distance greater than 100 km
+        String expectedOutput = "03 minutes and 32 seconds";
+        assertEquals(expectedOutput, car.estimateTime(distance));
+    }
+
+//    @Test
+//    public void testPrintETA() {
+//        System.out.println("printETA");
+//        Location pickupLocation = null;
+//        GolfCar instance = null;
+//        instance.printETA(pickupLocation);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    @Test
+//    public void testNotifyDriverArrival() {
+//        System.out.println("notifyDriverArrival");
+//        Location pickupLocation = null;
+//        GolfCar instance = null;
+//        instance.notifyDriverArrival(pickupLocation);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    
 }
