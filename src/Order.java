@@ -1,4 +1,3 @@
-
 class Order {
 
     private Location currentLocation;
@@ -52,9 +51,7 @@ class Order {
     }
     
     public static void OrderDetails(Order order) {
-        // Implement your scheduling logic here
-        
-        // Example: Print the order details
+        //Print the order details
         System.out.println("-------------------");
         System.out.println("Order details: \n Number of seats: " + order.getNumSeats() +
                 "\n Current location: " + order.getCurrentLocation().getAdress() +

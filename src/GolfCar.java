@@ -1,12 +1,10 @@
 
-  import java.util.HashMap;
-import java.util.Map;
 class GolfCar {
     
    private String numSeats;
    private static  String platenum;
 
-   private static final String[] locations = {"library", "College of Designs", "Cafeteria"};
+   private static final String[] locations = {"library", "college of Designs", "cafeteria"};
     private static final int[] distances = {500, 300, 200};
 
     
@@ -58,6 +56,10 @@ public static String estimateTimep(String current, String destination) {
     }
 }
 
+
+
+
+   
  public static String estimateTime(int distance) {
     // Let's assume a constant speed of 60 km/h
     double speedKmPerHour = 60.0; // kilometers per hour
@@ -76,8 +78,7 @@ public static String estimateTimep(String current, String destination) {
     return String.format("%02d minutes and %02d seconds", minutes, seconds);
 }
 
-
-   
+ 
 
 
 

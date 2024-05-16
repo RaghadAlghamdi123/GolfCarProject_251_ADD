@@ -1,6 +1,6 @@
 public class Location {
     
-     private String adress;
+    private String adress;
 
     public Location(String adress) {
         this.adress = adress;

@@ -94,11 +94,4 @@ public class FeedBack {
             }
         }
     }
-    
-    // Method to check if user wants to provide feedback
-    public boolean wantToProvideFeedback() {
-        System.out.println("Do you want to provide feedback? (yes/no): ");
-        String response = scanner.nextLine().trim().toLowerCase();
-        return response.equals("yes");
-    }
 }

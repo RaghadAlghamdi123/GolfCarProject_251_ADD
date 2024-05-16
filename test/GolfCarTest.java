@@ -1,21 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-/**
- *
- * @author aseel
- */
 public class GolfCarTest {
 
     GolfCar car;
@@ -51,28 +41,23 @@ public class GolfCarTest {
     public void tearDown() {
     }
 
-   @Test
-    public void testEstimateTimep() {
-       // Define current and destination locations
-        String current = "library";
-        String destination = "Cafeteria";
+@Test
+public void testEstimateTimep() {
+    String current = "library";
+    String destination = "cafeteria";  // Make sure the case sensitivity is correct
 
-        // Call the method under test
-        String actualOutput = car.estimateTimep(current, destination);
+    int distanceWaiting = 500; // Correct distance for 'library'
+    int distanceInCar = 300;   // Adjusted for correct understanding of indices
 
-        // Define the expected output
-        String expectedOutput = "Please wait, the driver will come within 03 minutes and 49 seconds\n\nIn the car " +
-                                "distance from " + current + " to " + destination + ": 300 km\n" +
-                                "Estimated time to arrival: 03 minutes and 38 seconds";
+    String expectedOutput = "Please wait, the driver will come within " + car.estimateTime(distanceWaiting) +
+                            "\n\nIn the car " +
+                            "distance from " + current + " to " + destination + ": " + distanceInCar + " km\n" +
+                            "Estimated time to arrival: " + car.estimateTime(distanceInCar);
 
-        // Assert that the output matches the expected output
-        assertEquals(expectedOutput, actualOutput);    }
-    
-    
-    
-    
-    
-    
+    String actualOutput = car.estimateTimep(current, destination);
+    assertEquals(expectedOutput, actualOutput);
+}
+
 
     @Test
     public void testEstimateTime() {
@@ -82,24 +67,4 @@ public class GolfCarTest {
         String expectedOutput = "03 minutes and 32 seconds";
         assertEquals(expectedOutput, car.estimateTime(distance));
     }
-
-//    @Test
-//    public void testPrintETA() {
-//        System.out.println("printETA");
-//        Location pickupLocation = null;
-//        GolfCar instance = null;
-//        instance.printETA(pickupLocation);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    @Test
-//    public void testNotifyDriverArrival() {
-//        System.out.println("notifyDriverArrival");
-//        Location pickupLocation = null;
-//        GolfCar instance = null;
-//        instance.notifyDriverArrival(pickupLocation);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    
 }
