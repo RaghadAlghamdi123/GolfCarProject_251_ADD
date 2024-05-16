@@ -4,9 +4,11 @@ public class FeedBack {
     private String feedbackID;
     private String freeFeedback = null;
     private int restrictedFeedback = 0;
+    private Scanner scanner;
 
-    public FeedBack(String feedbackID) {
+    public FeedBack(String feedbackID, Scanner scanner) {
         this.feedbackID = feedbackID;
+        this.scanner = scanner;
     }
 
     public void setRestrictedFeedBack(int feedback) {
@@ -19,11 +21,11 @@ public class FeedBack {
     }
 
     public void setFreeFeedBack(String feedback) {
-        if (feedback.length() <= 150 && !feedback.matches(".*[$%^&*@].*")) {
+        if (feedback.length() <= 150 && feedback.matches("[a-zA-Z ]+")) {
             this.freeFeedback = feedback;
             displayConfirmation();
         } else {
-            System.out.println("Invalid input. Free feedback should not exceed 150 characters and should not contain special characters.");
+            System.out.println("Invalid input. Free feedback should contain alphabets and spaces only, and not exceed 150 characters.");
         }
     }
 
@@ -39,17 +41,64 @@ public class FeedBack {
         System.out.println("Your feedback has been sent successfully.");
     }
 
+    // Method to prompt user for feedback type and then enter feedback
+    public void promptForFeedback() {
+        System.out.println("Choose feedback type:");
+        System.out.println("1. Free feedback");
+        System.out.println("2. Restricted feedback (1 to 5)");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (choice) {
+            case 1:
+                promptUserForFreeFeedback();
+                break;
+            case 2:
+                promptUserForRestrictedFeedback();
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+    }
+
     // Method to prompt user for free text feedback
-    public void promptUserForFreeFeedback(Scanner scanner) {
-        System.out.println("Please provide your feedback (max 150 characters, avoid special characters): ");
+    private void promptUserForFreeFeedback() {
+        System.out.println("Please provide your feedback (max 150 characters, alphabets and spaces only): ");
         String feedback = scanner.nextLine();
-        setFreeFeedBack(feedback);
+        if (feedback.length() <= 150 && feedback.matches("[a-zA-Z ]+")) {
+            setFreeFeedBack(feedback);
+        } else {
+            System.out.println("Invalid input. Free feedback should contain alphabets and spaces only, and not exceed 150 characters.");
+            promptUserForFreeFeedback(); // Prompt again recursively
+        }
     }
 
     // Method to prompt user for restricted feedback (numbers only)
-    public void promptUserForRestrictedFeedback(Scanner scanner) {
-        System.out.println("Please rate your experience (from 1 to 5): ");
-        int feedback = scanner.nextInt();
-        setRestrictedFeedBack(feedback);
+    private void promptUserForRestrictedFeedback() {
+        boolean validInput = false;
+        while (!validInput) {
+            System.out.println("Please rate your experience (from 1 to 5): ");
+            if (scanner.hasNextInt()) {
+                int feedback = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                if (feedback >= 1 && feedback <= 5) {
+                    setRestrictedFeedBack(feedback);
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid input. Restricted feedback should be a number between 1 and 5.");
+                }
+            } else {
+                scanner.next(); // Consume invalid input
+                System.out.println("Invalid input. Restricted feedback should be a number between 1 and 5.");
+            }
+        }
+    }
+    
+    // Method to check if user wants to provide feedback
+    public boolean wantToProvideFeedback() {
+        System.out.println("Do you want to provide feedback? (yes/no): ");
+        String response = scanner.nextLine().trim().toLowerCase();
+        return response.equals("yes");
     }
 }
